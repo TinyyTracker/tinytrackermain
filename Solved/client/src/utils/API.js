@@ -5,6 +5,9 @@ export default {
   getBooks: function () {
     return axios.get("/api/books");
   },
+  getLocation: function (author) {
+    return axios.get("/api/books/" + author);
+  },
   // Deletes the book with the given id
   deleteBook: function (id) {
     return axios.delete("/api/books/" + id);

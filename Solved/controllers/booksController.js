@@ -5,7 +5,16 @@ const db = require("../models");
 const bookFunctions = {
   findAll: function (req, res) {
     db.Book
-      .find(req.query)
+      .find(req.query )
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByLocation: function (req, res) {
+    console.log(req.params.author);
+    db.Book
+      .find()
+      .where("author").equals(req.params.author)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -38,6 +47,8 @@ const bookFunctions = {
 }
 
 router.get("/api/books", bookFunctions.findAll)
+
+router.get("/api/books/:author", bookFunctions.findByLocation)
 
 router.get("/api/dashboard", bookFunctions.findAll)
 
