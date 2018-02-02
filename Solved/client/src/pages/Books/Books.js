@@ -54,15 +54,16 @@ class Books extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
-    });
+      [name]: value});
   };
   handleLocationChange = event => {
-   
-    this.setState({sLocation: event.target.value});
-    console.log(this.state.sLocation);
-    this.loadBooks();
-    
+    console.log(event.target.value);
+    console.log("1st sLocation: "+ this.state.sLocation);
+    this.setState({sLocation: event.target.value},this.loadBooks);
+    console.log(event.target.value);
+    console.log("2nd sLocation: "+ this.state.sLocation);
+    // this.loadBooks(this.state.sLocation);
+
     
   };
 
@@ -93,6 +94,7 @@ class Books extends React.Component {
         <select className="form-control"
         value={this.state.sLocation}
         onChange={this.handleLocationChange}
+        // onClick={this.loadBooks(this.handleLocationChange)}
         name="sLocation"
         
         >
