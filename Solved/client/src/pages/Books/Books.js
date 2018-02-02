@@ -15,7 +15,8 @@ class Books extends React.Component {
       books: [],
       title: "",
       author: "",
-      synopsis: ""
+      synopsis: "",
+      sLocation: ""
     };
   }
 
@@ -26,11 +27,20 @@ class Books extends React.Component {
 
   // Loads all books  and sets them to this.state.books
   loadBooks = () => {
+    if (this.state.sLocation === "" || this.state.sLocation === "All Locations"){
     API.getBooks()
       .then(res =>
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
+    } else {
+      API.getLocation(this.state.sLocation)
+      .then(res =>
+        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        
+      )
+      .catch(err => console.log(err));
+    }
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
@@ -46,6 +56,14 @@ class Books extends React.Component {
     this.setState({
       [name]: value
     });
+  };
+  handleLocationChange = event => {
+   
+    this.setState({sLocation: event.target.value});
+    console.log(this.state.sLocation);
+    this.loadBooks();
+    
+    
   };
 
   // When the form is submitted, use the API.saveBook method to save the book data
@@ -71,7 +89,20 @@ class Books extends React.Component {
             <Jumbotron>
               <h1>Find My Shit</h1>
             </Jumbotron>
-            <Dropdown />
+            <div className="form-group">
+        <select className="form-control"
+        value={this.state.sLocation}
+        onChange={this.handleLocationChange}
+        name="sLocation"
+        
+        >
+            <option value="Select Location">Select Location</option>
+            <option value="Basement">Basement</option>
+            <option value="Garage">Garage</option>
+            <option value="Second Floor">Second Floor</option>
+            <option value="All Locations">All Locations</option>
+        </select>
+      </div>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => {
