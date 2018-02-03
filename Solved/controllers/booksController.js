@@ -48,7 +48,7 @@ const bookFunctions = {
 
 router.get("/api/books", bookFunctions.findAll)
 
-router.get("/api/books/:author", bookFunctions.findByLocation)
+router.get("/api/location/:author", bookFunctions.findByLocation)
 
 router.get("/api/dashboard", bookFunctions.findAll)
 
@@ -57,6 +57,8 @@ router.post("/api/books", bookFunctions.create)
 router.delete("/api/books/:id", bookFunctions.remove)
 
 router.get("/api/books/:id", bookFunctions.findById)
+
+router.patch("/api/books/:id", bookFunctions.update)
 
 // If no API routes are hit, send the React app
 router.use(function (req, res) {

@@ -16,7 +16,8 @@ class Books extends React.Component {
       title: "",
       author: "",
       synopsis: "",
-      sLocation: ""
+      sLocation: "",
+      unique: []
     };
   }
 
@@ -70,6 +71,8 @@ class Books extends React.Component {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   handleFormSubmit = event => {
+    this.setState({unique: []});
+    console.log(this.state.unique);
     event.preventDefault();
     if (this.state.title && this.state.author) {
       API.saveBook({
@@ -98,11 +101,22 @@ class Books extends React.Component {
         name="sLocation"
         
         >
-            <option value="Select Location">Select Location</option>
-            <option value="Basement">Basement</option>
-            <option value="Garage">Garage</option>
-            <option value="Second Floor">Second Floor</option>
-            <option value="All Locations">All Locations</option>
+          <option value="Select Location">Select Location</option>
+          <option value="All Locations">All Locations</option>
+          
+          {this.state.books.map(book => {
+            console.log(this.state.unique);
+            console.log(book);
+            if (this.state.unique.indexOf(book.author) < 0){
+              console.log("here " + this.state.unique);
+              this.state.unique.push(book.author);
+            return (
+              <option value={book.author}>{book.author}</option>        
+            );
+          } else {
+            <option value={book.author}>{book.author}</option>  
+          }
+          })}
         </select>
       </div>
             {this.state.books.length ? (

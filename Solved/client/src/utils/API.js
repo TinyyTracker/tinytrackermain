@@ -6,7 +6,7 @@ export default {
     return axios.get("/api/books");
   },
   getLocation: function (author) {
-    return axios.get("/api/books/" + author);
+    return axios.get("/api/location/" + author);
   },
   // Deletes the book with the given id
   deleteBook: function (id) {
@@ -19,5 +19,8 @@ export default {
   // Gets the book with the given id
   getBook: function (id) {
     return axios.get("/api/books/" + id);
+  },
+  patchBook: function (id, bookData) {
+    return axios.patch("/api/books/" + id, bookData);
   },
 };
