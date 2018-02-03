@@ -139,13 +139,13 @@ class Books extends React.Component {
                 value={this.state.author}
                 onChange={this.handleInputChange}
                 name="author"
-                placeholder="Author (required)"
+                placeholder="Location"
               />
               <TextArea
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
-                placeholder="Synopsis (Optional)"
+                placeholder="Additional Notes"
               />
               <FormBtn
                 disabled={!(this.state.author && this.state.title)}
