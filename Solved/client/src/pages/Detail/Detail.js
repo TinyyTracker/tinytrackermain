@@ -70,7 +70,7 @@ class Detail extends React.Component {
       <Row>
         <button onClick={() => this.handleUpdate(true)}>Update</button>
         <Col size="md-2">
-          <Link to="/">← Back to Authors</Link>
+          <Link to="/books">← Back to Authors</Link>
         </Col>
       </Row>
     </Container>
