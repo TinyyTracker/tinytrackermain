@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { Link, withRouter } from 'react-router-dom';
 
 import Jumbotron from "../../components/Jumbotron";
+import Iphone from "../../components/Iphone";
+import Features from "../../components/Features";
 // import {SignUpLink} from '../SignUp';
 // import PasswordForgetLink from '../PasswordForget';
 
@@ -13,16 +15,36 @@ import { Col, Row, Container } from "../../components/Grid";
 // import { Input, FormBtn } from "../../components/Form";
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
+import "./Signin.css";
 
+const divStyle = {color: 'white'};
 
 const SignInPage = ({ history }) =>
+<div>
+<div className="signin-menu-route">
+    <div className="container signin-form">
+    <div className="menu-txt">
     <div>
-        
+        <h1 style={divStyle}>Welcome to Tiny Tracker!</h1>
+        <div>
+        <h3 style={divStyle}></h3>
+        <h3 style={divStyle}>Tiny Tracker is an app that will help you locate your lost items or anything else!</h3>
+        </div>
+    </div>
         <SignInForm history={history} />
         <Link to="/passwordforget">Forget Password?</Link>
         <br></br>
-        <Link to={routes.SIGN_UP}>Sign Up</Link>
-    </div>
+        <Link to={routes.SIGN_UP}><button type="button" className="btn" aria-label="Left Align">
+  <span>Start Now For Free</span>
+</button></Link>
+</div>
+<div>
+<Iphone />
+</div>
+</div>
+</div>
+<Features />
+</div>
 
 const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value,
@@ -143,16 +165,18 @@ class SignInForm extends Component {
                 onChange={event =>this.setState(byPropKey('email', event.target.value))}
                 type="text"
                 placeholder="Email Address"
+                className="form-control"
                 />
                 <input
                 value={password}
                 onChange={event =>this.setState(byPropKey('password', event.target.value))}
                 type="password"
                 placeholder="Password"
+                className="form-control"
                 />
-                <button disabled={isInvalid} type="submit">
-                Sign In
-                </button>
+                <button disabled={isInvalid} type="submit" className="btn" aria-label="Left Align">
+  <span>Signin!</span>
+</button>
 
                 { error && <p>{error.message}</p>}
             </form>
