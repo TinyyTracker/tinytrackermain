@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import PasswordForget from "./pages/PasswordForget";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 import withAuthentication from './components/Authentication';
 
@@ -26,6 +27,7 @@ const App = () =>
         <Route exact path={routes.DETAIL} component={Detail} />
         <Route component={NoMatch} />
       </Switch>
+      <Footer />
     </div>
   </Router>;
 

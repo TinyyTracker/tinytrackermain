@@ -29,11 +29,17 @@ const NavigationAuth = () =>
           Tiny Tracker
         </a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
+      <ul className="nav navbar-nav">
+        <li className="active nav-list-item"><a href="/books">Link <span class="sr-only">(current)</span></a></li>
+        <li className="nav-list-item"><a href="/books">Link</a></li>
+        </ul>
+      <ul className="nav navbar-nav navbar-right">
       <li><SignOutButton /></li>
     </ul>
     </div>
   </nav>
+
+  
 
 const NavigationNonAuth = () =>
   <nav className="navbar navbar-inverse navbar-top">
@@ -42,6 +48,10 @@ const NavigationNonAuth = () =>
         <a href="/books" className="navbar-brand">
           Tiny Tracker
         </a>
+        <ul className="nav navbar-nav">
+        <li className="active nav-list-item"><a href="/books">Link <span className="sr-only">(current)</span></a></li>
+        <li className="nav-list-item"><a href="/books">Link</a></li>
+        </ul>
       </div>
      </div>
   </nav>

@@ -1,0 +1,58 @@
+.signin-menu-route{
+    /* background: url("bg-pattern.png"),linear-gradient(to left,green,black); */
+    background: url("https://images.unsplash.com/photo-1510663228452-83fb830ec1d6?ixlib=rb-0.3.5&s=a4e1241e1f1db8c0f2ec50560de9a908&auto=format&fit=crop&w=1050&q=80");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.signin-form{
+    text-align: center;
+    display: flex;
+    height:120vh;
+}
+.menu-txt{
+    width:50%;
+    margin-right: 20%;
+    margin-top:10%;
+}
+.form-control{
+    display:inline-block;
+    width:20%;
+}
+.btn{
+    border-radius: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: #431c5d;
+    color:#ffff;
+    padding: 10px 30px 10px 30px;
+}
+.btn:hover, .btn:focus, .btn.focus{
+    background-color: #431c5d;
+    border-color: #431c5d;
+}
+/* #431c5d */
+
+/* Media Queries */
+/* @media only screen and (min-width: 996px) {
+    #root{
+        height:100vh;
+    }
+} */
+@media only screen and (max-width: 996px) {
+    .form-control{
+        display:inline-block;
+        width:80%;
+    }
+    .signin-form{
+        display: block;
+    }
+    .iphone-photo{
+        height: 400px;
+    }
+    .menu-txt{
+        width:100%;
+        margin-right: 0%;
+    }
+}

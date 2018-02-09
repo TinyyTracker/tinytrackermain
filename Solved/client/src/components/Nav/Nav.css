@@ -3,5 +3,22 @@
 }
 .navbar-inverse{
     border-color: transparent;
-    background-color: #3b3a36;
+    background-color: #b5b5b7
+    ;
+}
+.navbar-brand{
+    color:black !important;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus{
+    color:black;
+    background-color:#431c5d;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color:black;
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
+    background-color: #431c5d;
 }
