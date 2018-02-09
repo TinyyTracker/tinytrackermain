@@ -10,30 +10,32 @@ class Features extends React.Component {
         <h1>Never Lose Your Items Again!</h1>
         <h3>Check out what Tiny Tracker can do!</h3>
         <div className="">
-            <div className="glyph-div">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>            </div>
-            <h3>Hello!</h3>
-            <h5>Lorem ipsum all day baby</h5>
-            <div className="glyph-div">
+            <div className="col-xs-6 col-md-3 glyph-div">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <h3>Hello!</h3>
             <h5>Lorem ipsum all day baby</h5>
             </div>
-            <div className="glyph-div">
+            <div className="col-xs-6 col-md-3 glyph-div">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <h3>Hello!</h3>
             <h5>Lorem ipsum all day baby</h5>
             </div>
-            <div className="glyph-div">
+            <div className="col-xs-6 col-md-3 glyph-div">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            <h3>Hello!</h3>
+            <h5>Lorem ipsum all day baby</h5>
+            </div>
+            <div className="col-xs-6 col-md-3 glyph-div">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <h3>Hello!</h3>
             <h5>Lorem ipsum all day baby</h5>
             </div>
         </div>
-
-    </div>
+        </div>
       );
     }
   }
+
+  
 
 export default Features;
