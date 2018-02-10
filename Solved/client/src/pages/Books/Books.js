@@ -146,7 +146,7 @@ console.log("++++++++++++++++++" + this.state.email);
                     <ListItem key={book._id}>
                       <a href={"/books/" + book._id}>
                         <strong>
-                          {book.title} by {book.author}
+                          {book.title} in {book.author}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteBook(book._id)} />
