@@ -1,9 +1,10 @@
 .features-section{
     text-align: center;
-    background-color: #431c5d;
+    background-color: #ffff;
 }
 .glyphicon{
     font-size: 96px;
+    color: #f53240;
 }
 .features-header{
     margin-bottom: 10%;

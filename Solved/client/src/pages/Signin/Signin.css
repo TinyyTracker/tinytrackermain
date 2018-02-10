@@ -1,6 +1,6 @@
 .signin-menu-route{
     /* background: url("bg-pattern.png"),linear-gradient(to left,green,black); */
-    background: url("https://images.unsplash.com/photo-1510663228452-83fb830ec1d6?ixlib=rb-0.3.5&s=a4e1241e1f1db8c0f2ec50560de9a908&auto=format&fit=crop&w=1050&q=80");
+    background: url("https://images.unsplash.com/photo-1512429234305-12fe5b0b0f07?ixlib=rb-0.3.5&s=62d3d9c7deb236aa309ea52f8cd6cf4e&auto=format&fit=crop&w=967&q=80");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -8,11 +8,9 @@
 .signin-form{
     text-align: center;
     display: flex;
-    height:120vh;
+    height:95vh;
 }
 .menu-txt{
-    width:50%;
-    margin-right: 20%;
     margin-top:10%;
 }
 .form-control{
@@ -24,13 +22,13 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     background-color: transparent;
-    border-color: #431c5d;
+    border-color: #f53240;
     color:#ffff;
     padding: 10px 30px 10px 30px;
 }
 .btn:hover, .btn:focus, .btn.focus{
-    background-color: #431c5d;
-    border-color: #431c5d;
+    background-color: #f53240;
+    border-color: #f53240;
 }
 
 /* #431c5d */

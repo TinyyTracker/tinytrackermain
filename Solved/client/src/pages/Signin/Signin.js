@@ -9,7 +9,7 @@ import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import "./Signin.css";
 
-const divStyle = {color: 'white'};
+const divStyle = {color: 'black'};
 
 const SignInPage = ({ history }) =>
 <div className="signin-menu-route">
@@ -31,9 +31,6 @@ const SignInPage = ({ history }) =>
         <Link to={routes.SIGN_UP}><button type="button" className="btn" aria-label="Left Align">
   <span>Start Now For Free</span>
 </button></Link>
-</div>
-<div>
-<Iphone />
 </div>
 </div>
 </div>
@@ -82,6 +79,9 @@ class SignInForm extends Component {
       event.preventDefault();
   }
 
+//   <div>
+// <Iphone />
+// </div>
 
 // class Books extends React.Component {
 //   constructor(props) {
