@@ -6,12 +6,15 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 
+import { firebase } from '../../firebase';
+
 class Detail extends React.Component {
-  constructor(props) {
+  constructor(props, { authUser }) {
     super(props);
     this.state = {
       book: {},
-      isUpdate: false
+      isUpdate: false,
+      email: ""
     };
   }
   // When this component mounts, grab the book with the _id of this.props.match.params.id
@@ -20,6 +23,10 @@ class Detail extends React.Component {
     API.getBook(this.props.match.params.id)
       .then(res => this.setState({ book: res.data }))
       .catch(err => console.log(err));
+
+      firebase.auth.onAuthStateChanged(authUser => {
+        this.setState({"email": authUser.email});
+      })
   }
 
   handleUpdate(isUpdate) {
@@ -135,8 +142,13 @@ class Detail extends React.Component {
   );
 
   render() {
-    if (this.state.isUpdate) return this.getUpdateform();
-    else return this.getReadOnly();
+    if(this.state.email === ""){
+      return null
+    } else {
+      if (this.state.isUpdate) return this.getUpdateform();
+      else return this.getReadOnly();
+    }
+   
   }
 }
 
