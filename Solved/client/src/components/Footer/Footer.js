@@ -7,7 +7,7 @@ class Footer extends React.Component {
     render () {
       return (
           <footer>
-              <h1>THIS IS THE MOTHER FUCKIN FOOTER</h1>
+              <h1>THIS IS THE FOOTER</h1>
           </footer>
       );
     }
