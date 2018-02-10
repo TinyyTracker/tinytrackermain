@@ -22,39 +22,55 @@ Nav.contextTypes = {
 
 
 const NavigationAuth = () =>
-  <nav className="navbar navbar-inverse navbar-top">
-    <div className="container-fluid">
-      <div className="navbar-header">   
-        <a href="/books" className="navbar-brand">
-          Tiny Tracker
-        </a>
-      </div>
-      <ul className="nav navbar-nav">
-        <li className="active nav-list-item"><a href="/books">Link <span class="sr-only">(current)</span></a></li>
-        <li className="nav-list-item"><a href="/books">Link</a></li>
-        </ul>
-      <ul className="nav navbar-nav navbar-right">
-      <li><SignOutButton /></li>
+<nav className="navbar navbar-default">
+<div className="container-fluid">
+  <div className="navbar-header">
+    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span className="sr-only">Toggle navigation</span>
+      <span className="icon-bar"></span>
+      <span className="icon-bar"></span>
+      <span className="icon-bar"></span>
+    </button>
+    <a className="navbar-brand" href="/books">Tiny Tracker</a>
+  </div>
+  <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul className="nav navbar-nav">
+      <li className="active"><a href="/">Home <span className="sr-only">(current)</span></a></li>
+      <li><a href="/">About</a></li>
+      <li><a href="/">Features</a></li>
+      <li><a href="/">Contact</a></li>
     </ul>
-    </div>
-  </nav>
+    <ul className="nav navbar-nav navbar-right">
+    <li><SignOutButton /></li>
+    </ul>
+  </div>
+</div>
+</nav>
 
   
 
 const NavigationNonAuth = () =>
-  <nav className="navbar navbar-inverse navbar-top">
-    <div className="container-fluid">
-      <div className="navbar-header">   
-        <a href="/books" className="navbar-brand">
-          Tiny Tracker
-        </a>
-        <ul className="nav navbar-nav">
-        <li className="active nav-list-item"><a href="/books">Link <span className="sr-only">(current)</span></a></li>
-        <li className="nav-list-item"><a href="/books">Link</a></li>
-        </ul>
-      </div>
-     </div>
-  </nav>
+<nav className="navbar navbar-default">
+<div className="container-fluid">
+  <div className="navbar-header">
+    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span className="sr-only">Toggle navigation</span>
+      <span className="icon-bar"></span>
+      <span className="icon-bar"></span>
+      <span className="icon-bar"></span>
+    </button>
+    <a className="navbar-brand" href="/books">Tiny Tracker</a>
+  </div>
+  <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul className="nav navbar-nav">
+      <li className="active"><a href="/">Home <span className="sr-only">(current)</span></a></li>
+      <li><a href="/">About</a></li>
+      <li><a href="/">Features</a></li>
+      <li><a href="/">Contact</a></li>
+    </ul>
+  </div>
+</div>
+</nav>
 
 
 export default Nav;

@@ -1,18 +1,10 @@
 import React, {Component} from "react";
 import { Link, withRouter } from 'react-router-dom';
 
-import Jumbotron from "../../components/Jumbotron";
+import Nav from "../../components/Nav";
 import Iphone from "../../components/Iphone";
 import Features from "../../components/Features";
-// import {SignUpLink} from '../SignUp';
-// import PasswordForgetLink from '../PasswordForget';
-
-// import API from "../../utils/API";
-
-//may need signup link and password forget link
-
 import { Col, Row, Container } from "../../components/Grid";
-// import { Input, FormBtn } from "../../components/Form";
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import "./Signin.css";
@@ -20,8 +12,10 @@ import "./Signin.css";
 const divStyle = {color: 'white'};
 
 const SignInPage = ({ history }) =>
-<div className="buttcheeks">
 <div className="signin-menu-route">
+<Nav />
+<div className="buttcheeks">
+<div>
     <div className="container signin-form">
     <div className="menu-txt">
     <div>
@@ -44,6 +38,7 @@ const SignInPage = ({ history }) =>
 </div>
 </div>
 <Features />
+</div>
 </div>
 
 const byPropKey = (propertyName, value) => () => ({

@@ -17,7 +17,6 @@ import * as routes from './constants/routes';
 const App = () =>
   <Router>
     <div className="Maaaaaaaad buttcheeks">
-      <Nav />
       <Switch>
         <Route exact path={routes.SIGN_IN} component={Signin} />
         <Route exact path={routes.SIGN_UP} component={SignUp} />

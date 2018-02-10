@@ -10,7 +10,7 @@ const SignOutButton = () =>
     //     Sign Out
     // </button>
     <button onClick={auth.doSignOut} type="button" className="btn" aria-label="Right Align">
-    <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true"></span><span>Signout</span>
+    <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true" style={{fontSize:"16px"}}></span><span>Signout</span>
   </button>
 
 export default SignOutButton;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Nav from "../../components/Nav";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
@@ -47,6 +48,8 @@ class Detail extends React.Component {
   };
 
   getReadOnly = () => (
+    <div>
+      <Nav />
     <Container fluid>
       <Row>
         <Col size="md-12">
@@ -82,9 +85,12 @@ class Detail extends React.Component {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 
   getUpdateform = () => (
+    <div>
+      <Nav />
     <Container fluid>
       <Row>
         <Col size="md-12">
@@ -125,6 +131,7 @@ class Detail extends React.Component {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 
   render() {

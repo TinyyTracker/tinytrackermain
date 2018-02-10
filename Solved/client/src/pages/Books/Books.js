@@ -1,5 +1,6 @@
 import React from "react";
 import Jumbotron from "../../components/Jumbotron";
+import Nav from "../../components/Nav";
 import DeleteBtn from "../../components/DeleteBtn";
 import Dropdown from "../../components/Dropdown";
 import API from "../../utils/API";
@@ -103,6 +104,8 @@ console.log("++++++++++++++++++" + this.state.email);
 
   render() {
     return (
+      <div>
+        <Nav />
       <Container fluid>
         <Row>
         <Col size="md-6 sm-12">
@@ -193,6 +196,7 @@ console.log("++++++++++++++++++" + this.state.email);
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
