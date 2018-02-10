@@ -52,7 +52,7 @@ class Detail extends React.Component {
         <Col size="md-12">
           <Jumbotron>
             <h1>
-              {this.state.book.title} by {this.state.book.author}
+              {this.state.book.title} in {this.state.book.author}
             </h1>
           </Jumbotron>
         </Col>
@@ -60,7 +60,7 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-10 md-offset-1">
           <article>
-            <h1>Synopsis</h1>
+            <h1>Item Information</h1>
             <p>
               {this.state.book.synopsis}
             </p>
@@ -68,9 +68,17 @@ class Detail extends React.Component {
         </Col>
       </Row>
       <Row>
-        <button onClick={() => this.handleUpdate(true)}>Update</button>
+        <button 
+        type="button" 
+        className="btn"
+        style={{backgroundColor:"#431c5d"}} 
+        aria-label="Left Align"
+        onClick={() => this.handleUpdate(true)}
+        >
+  <span>Update Item!</span>
+</button>
         <Col size="md-2">
-          <Link to="/books">← Back to Authors</Link>
+          <Link to="/books">← Back to Dashboard</Link>
         </Col>
       </Row>
     </Container>
@@ -81,7 +89,7 @@ class Detail extends React.Component {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>What Books Should I Read?</h1>
+            <h1>Edit Item</h1>
           </Jumbotron>
         </Col>
       </Row>

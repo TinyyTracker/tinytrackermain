@@ -20,7 +20,7 @@ import "./Signin.css";
 const divStyle = {color: 'white'};
 
 const SignInPage = ({ history }) =>
-<div>
+<div className="buttcheeks">
 <div className="signin-menu-route">
     <div className="container signin-form">
     <div className="menu-txt">

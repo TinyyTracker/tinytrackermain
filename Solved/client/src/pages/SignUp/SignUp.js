@@ -2,15 +2,15 @@ import React, {Component} from "react";
 import { Link, withRouter } from 'react-router-dom';
 
 import Jumbotron from "../../components/Jumbotron";
-
+import './style.css';
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, FormBtn } from "../../components/Form";
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const SignUpPage = ({history}) =>
-    <div className="signin-form">
-        <h1>Sign Up Page</h1>
+    <div className="signup-form">
+        <h1 className="signup-header">Sign Up Page</h1>
         <SignUpForm history={history} />
     </div>
     
@@ -73,6 +73,7 @@ class SignUpForm extends Component {
             username === '';
 
         return (
+            <div className="container">
             <form onSubmit={this.onSubmit}>
                 <input
                 value={username}
@@ -102,12 +103,13 @@ class SignUpForm extends Component {
                 placeholder="Confirm Password"
                 className="form-control"
                 />
-                <button disabled={isInvalid} type="submit" type="button" className="btn btn-danger" aria-label="Left Align">
+                <button disabled={isInvalid} type="submit" className="btn" aria-label="Left Align">
   <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true"></span><span>Sign Up!</span>
 </button>
 
                 { error && <p>{error.message}</p>}
             </form>
+            </div>
         );
     }
 }
