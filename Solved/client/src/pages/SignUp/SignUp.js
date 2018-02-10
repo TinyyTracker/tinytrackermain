@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Link, withRouter } from 'react-router-dom';
-
+import Nav from "../../components/Nav";
 import Jumbotron from "../../components/Jumbotron";
 import './style.css';
 import { Col, Row, Container } from "../../components/Grid";
@@ -9,9 +9,12 @@ import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const SignUpPage = ({history}) =>
+<div>
+    <Nav />
     <div className="signup-form">
         <h1 className="signup-header">Sign Up Page</h1>
         <SignUpForm history={history} />
+    </div>
     </div>
     
 const INITIAL_STATE = {
