@@ -7,7 +7,9 @@ class Footer extends React.Component {
     render () {
       return (
           <footer>
-              <h1>THIS IS THE NON STYLED FOOTER</h1>
+              <div className="container">
+              <h5 style={{marginTop:"4%"}}>Copywright Eric, Chris, James</h5>
+              </div>
           </footer>
       );
     }
