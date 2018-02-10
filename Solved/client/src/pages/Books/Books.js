@@ -6,12 +6,15 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import { auth } from '../../firebase';
+import SignInForm from '../Signin';
 // Import other components hereeeeee
 
 import withAuthorization from '../../components/Authorization';
+import { firebase } from '../../firebase';
 
 class Books extends React.Component {
-  constructor(props) {
+  constructor(props, { authUser }) {
     super(props);
     this.state = {
       books: [],
@@ -19,22 +22,29 @@ class Books extends React.Component {
       author: "",
       synopsis: "",
       sLocation: "",
-      unique: []
+      unique: [],
+      email: ""
     };
   }
+
 
   // When the component mounts, load all books and save them to this.state.books
   componentDidMount() {
     this.loadBooks();
+    firebase.auth.onAuthStateChanged(authUser => {
+        this.setState({"email": authUser.email});
+    })
   }
 
   // Loads all books  and sets them to this.state.books
   loadBooks = () => {
     if (this.state.sLocation === "" || this.state.sLocation === "All Locations" || this.state.sLocation === "Select Location"){
     API.getBooks()
-      .then(res =>
+      .then(res =>{
+        console.log("RES ---------------- " + res.data);
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
+        console.log("RES2 ---------------- " );
+      })
       .catch(err => console.log(err));
     } else {
       API.getLocation(this.state.sLocation)
@@ -75,14 +85,16 @@ class Books extends React.Component {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   handleFormSubmit = event => {
+    event.preventDefault();
     // this.setState({unique: []});
     // console.log(this.state.unique);
-    event.preventDefault();
+console.log("++++++++++++++++++" + this.state.email);
     if (this.state.title && this.state.author) {
       API.saveBook({
         title: this.state.title,
         author: this.state.author,
-        synopsis: this.state.synopsis
+        synopsis: this.state.synopsis,
+        email: this.state.email
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -121,12 +133,15 @@ class Books extends React.Component {
           } 
           })}
     
-<option value={this.state.unique[0]}>{this.state.unique[0]}</option>
+              <option value={this.state.unique[0]}>{this.state.unique[0]}</option>
         </select>
       </div>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => {
+
+                  if(book.email === this.state.email){
+
                   return (
                     <ListItem key={book._id}>
                       <a href={"/books/" + book._id}>
@@ -137,6 +152,8 @@ class Books extends React.Component {
                       <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                     </ListItem>
                   );
+                }
+
                 })}
               </List>
             ) : (
@@ -181,5 +198,6 @@ class Books extends React.Component {
 }
 
 const authCondition = (authUser) => !!authUser;
+
 
 export default withAuthorization(authCondition)(Books);
