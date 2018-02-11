@@ -11,17 +11,18 @@ import { auth } from '../../firebase';
 import SignInForm from '../Signin';
 // Import other components hereeeeee
 
+
 import withAuthorization from '../../components/Authorization';
 import { firebase } from '../../firebase';
 
-class Books extends React.Component {
+class Items extends React.Component {
   constructor(props, { authUser }) {
     super(props);
     this.state = {
-      books: [],
+      items: [],
       title: "",
-      author: "",
-      synopsis: "",
+      location: "",
+      note: "",
       sLocation: "",
       unique: [],
       email: ""
@@ -31,26 +32,26 @@ class Books extends React.Component {
 
   // When the component mounts, load all books and save them to this.state.books
   componentDidMount() {
-    this.loadBooks();
+    this.loadItems();
     firebase.auth.onAuthStateChanged(authUser => {
         this.setState({"email": authUser.email});
     })
   }
 
   // Loads all books  and sets them to this.state.books
-  loadBooks = () => {
+  loadItems = () => {
     if (this.state.sLocation === "" || this.state.sLocation === "All Locations" || this.state.sLocation === "Select Location"){
-    API.getBooks()
+    API.getItems()
       .then(res =>{
         console.log("RES ---------------- " + res.data);
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ items: res.data, title: "", location: "", note: "" })
         console.log("RES2 ---------------- " );
       })
       .catch(err => console.log(err));
     } else {
       API.getLocation(this.state.sLocation)
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ items: res.data, title: "", location: "", note: "" })
         
       )
       .catch(err => console.log(err));
@@ -58,9 +59,9 @@ class Books extends React.Component {
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  deleteItem = id => {
+    API.deleteItem(id)
+      .then(res => this.loadItems())
       .catch(err => console.log(err));
   };
 
@@ -75,7 +76,7 @@ class Books extends React.Component {
     console.log(this.state.unique);
     console.log(event.target.value);
     console.log("1st sLocation: "+ this.state.sLocation);
-    this.setState({sLocation: event.target.value},this.loadBooks);
+    this.setState({sLocation: event.target.value},this.loadItems);
     console.log(event.target.value);
     console.log("2nd sLocation: "+ this.state.sLocation);
     // this.loadBooks(this.state.sLocation);
@@ -90,14 +91,14 @@ class Books extends React.Component {
     // this.setState({unique: []});
     // console.log(this.state.unique);
 console.log("++++++++++++++++++" + this.state.email);
-    if (this.state.title && this.state.author) {
-      API.saveBook({
+    if (this.state.title && this.state.location) {
+      API.saveItem({
         title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis,
+        location: this.state.location,
+        note: this.state.note,
         email: this.state.email
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
   };
@@ -123,14 +124,14 @@ console.log("++++++++++++++++++" + this.state.email);
           <option value="Select Location">Select Location</option>
           <option value="All Locations">All Locations</option>
           
-          {this.state.books.map(book => {
+          {this.state.items.map(item => {
             console.log(this.state.unique);
-            console.log(book);
-            if (this.state.unique.indexOf(book.author) < 0){
+            console.log(item);
+            if (this.state.unique.indexOf(item.location) < 0){
               console.log("here " + this.state.unique);
-              this.state.unique.push(book.author);
+              this.state.unique.push(item.location);
             return (
-              <option value={book.author}>{book.author}</option>   
+              <option value={item.location}>{item.location}</option>   
                    
             );
           } 
@@ -139,20 +140,20 @@ console.log("++++++++++++++++++" + this.state.email);
               <option value={this.state.unique[0]}>{this.state.unique[0]}</option>
         </select>
       </div>
-            {this.state.books.length ? (
+            {this.state.items.length ? (
               <List>
-                {this.state.books.map(book => {
+                {this.state.items.map(item => {
 
-                  if(book.email === this.state.email){
+                  if(item.email === this.state.email){
 
                   return (
-                    <ListItem key={book._id}>
-                      <a href={"/books/" + book._id}>
+                    <ListItem key={item._id}>
+                      <a href={"/items/" + item._id}>
                         <strong>
-                          {book.title} in {book.author}
+                          {item.title} in {item.location}
                         </strong>
                       </a>
-                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                      <DeleteBtn onClick={() => this.deleteItem(item._id)} />
                     </ListItem>
                   );
                 }
@@ -175,24 +176,24 @@ console.log("++++++++++++++++++" + this.state.email);
                 placeholder="Title (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.location}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Location"
+                name="location"
+                placeholder="Location required"
               />
               <TextArea
-                value={this.state.synopsis}
+                value={this.state.note}
                 onChange={this.handleInputChange}
-                name="synopsis"
+                name="note"
                 placeholder="Additional Notes"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.location && this.state.title)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Submit Item
               </FormBtn>
-            </form>
+            </form> 
           </Col>
         </Row>
       </Container>
@@ -204,4 +205,4 @@ console.log("++++++++++++++++++" + this.state.email);
 const authCondition = (authUser) => !!authUser;
 
 
-export default withAuthorization(authCondition)(Books);
+export default withAuthorization(authCondition)(Items);

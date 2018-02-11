@@ -11,24 +11,33 @@ mongoose.connect(
   }
 );
 
-const bookSeed = [
+const itemSeed = [
   {
     title: "Basball Bat",
-    author: "Bedroom",
-    synopsis:'In the right corner of the room',
-    date: new Date(Date.now())
+    location: "basement",
+    note:'In the right corner of the room',
+    date: new Date(Date.now()),
+    email: "test@test.com"
   },
   {
-    title: "Tomato Saurce",
-    author: "Kitchen",
-    synopsis:'In the upper right cabinet next to the unsuable china that mom never lets anyone use',
-    date: new Date(Date.now())
+    title: "Chairs",
+    location: "garage",
+    note:'top back shelf',
+    date: new Date(Date.now()),
+    email: "test@test.com"
+  },
+  {
+    title: "Pictures",
+    location: "attic",
+    note:'In blue box',
+    date: new Date(Date.now()),
+    email: "test@test.com"
   }
 ];
 
-db.Book
+db.Item
   .remove({})
-  .then(() => db.Book.collection.insertMany(bookSeed))
+  .then(() => db.Item.collection.insertMany(itemSeed))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);

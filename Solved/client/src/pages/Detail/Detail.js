@@ -12,7 +12,7 @@ class Detail extends React.Component {
   constructor(props, { authUser }) {
     super(props);
     this.state = {
-      book: {},
+      item: {},
       isUpdate: false,
       email: ""
     };
@@ -20,8 +20,8 @@ class Detail extends React.Component {
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getBook(this.props.match.params.id)
-      .then(res => this.setState({ book: res.data }))
+    API.getItem(this.props.match.params.id)
+      .then(res => this.setState({ item: res.data }))
       .catch(err => console.log(err));
 
       firebase.auth.onAuthStateChanged(authUser => {
@@ -37,18 +37,18 @@ class Detail extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
 
-    const updatedBook = {...this.state.book}
-    updatedBook[name] = value
+    const updatedItem = {...this.state.item}
+    updatedItem[name] = value
 
     this.setState({
-      book: updatedBook
+      item: updatedItem
     });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.book.title && this.state.book.author) {
-      API.patchBook(this.props.match.params.id, this.state.book)
+    if (this.state.item.title && this.state.item.location) {
+      API.patchItem(this.props.match.params.id, this.state.item)
         .then(res => this.setState({isUpdate:false}))
         .catch(err => console.log(err));
     }
@@ -62,7 +62,7 @@ class Detail extends React.Component {
         <Col size="md-12">
           <Jumbotron>
             <h1>
-              {this.state.book.title} in {this.state.book.author}
+              {this.state.item.title} in {this.state.item.location}
             </h1>
           </Jumbotron>
         </Col>
@@ -72,7 +72,7 @@ class Detail extends React.Component {
           <article>
             <h1>Item Information</h1>
             <p>
-              {this.state.book.synopsis}
+              {this.state.item.note}
             </p>
           </article>
         </Col>
@@ -110,29 +110,29 @@ class Detail extends React.Component {
         <Col size="md-10 md-offset-1">
           <form>
             <Input
-              value={this.state.book.title}
+              value={this.state.item.title}
               onChange={this.handleInputChange}
               name="title"
               placeholder="Title (required)"
             />
             <Input
-              value={this.state.book.author}
+              value={this.state.item.location}
               onChange={this.handleInputChange}
-              name="author"
-              placeholder="Author (required)"
+              name="location"
+              placeholder="Location (required)"
             />
             <TextArea
-              value={this.state.book.synopsis}
+              value={this.state.item.note}
               onChange={this.handleInputChange}
-              name="synopsis"
-              placeholder="Synopsis (Optional)"
+              name="note"
+              placeholder="Note (Optional)"
             />
             <button onClick={() => this.handleUpdate(false)}>Cancel</button>
             <FormBtn
-              disabled={!(this.state.book.author && this.state.book.title)}
+              disabled={!(this.state.item.location && this.state.item.title)}
               onClick={this.handleFormSubmit}
             >
-              Submit Book
+              Submit Item
             </FormBtn>
           </form>
         </Col>

@@ -6,35 +6,35 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
-class Books extends React.Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      items: [],
       title: "",
-      author: "",
-      synopsis: ""
+      location: "",
+      note: ""
     };
   }
 
   // When the component mounts, load all books and save them to this.state.books
   componentDidMount() {
-    this.loadBooks();
+    this.loadItems();
   }
 
   // Loads all books  and sets them to this.state.books
-  loadBooks = () => {
-    API.getBooks()
+  loadItems = () => {
+    API.getItems()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ items: res.data, title: "", location: "", note: "" })
       )
       .catch(err => console.log(err));
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  deleteItems = id => {
+    API.deleteItem(id)
+      .then(res => this.loadItems())
       .catch(err => console.log(err));
   };
 
@@ -50,13 +50,13 @@ class Books extends React.Component {
   // Then reload books from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
+    if (this.state.title && this.state.location) {
+      API.saveItem({
         title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+        location: this.state.location,
+        note: this.state.note
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
   };
@@ -67,7 +67,7 @@ class Books extends React.Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>this is Dashboard Should I Read?</h1>
             </Jumbotron>
             <form>
               <Input
@@ -77,40 +77,40 @@ class Books extends React.Component {
                 placeholder="Title (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.location}
                 onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
+                name="location"
+                placeholder="Location (required)"
               />
               <TextArea
-                value={this.state.synopsis}
+                value={this.state.note}
                 onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
+                name="note"
+                placeholder="Note (Optional)"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.location && this.state.title)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Submit Item
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>HUH On My List</h1>
             </Jumbotron>
-            {this.state.books.length ? (
+            {this.state.items.length ? (
               <List>
-                {this.state.books.map(book => {
+                {this.state.items.map(item => {
                   return (
-                    <ListItem key={book._id}>
-                      <a href={"/books/" + book._id}>
+                    <ListItem key={item._id}>
+                      <a href={"/items/" + item._id}>
                         <strong>
-                          {book.title} by {book.author}
+                          {item.title} by {item.location}
                         </strong>
                       </a>
-                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                      <DeleteBtn onClick={() => this.deleteItem(item._id)} />
                     </ListItem>
                   );
                 })}
@@ -125,4 +125,4 @@ class Books extends React.Component {
   }
 }
 
-export default Books;
+export default Dashboard;

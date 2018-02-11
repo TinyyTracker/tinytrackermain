@@ -58,19 +58,14 @@ class SignInForm extends Component {
   }
 
   onSubmit = (event) => {
-      const {
-          email,
-          password,
-      } = this.state;
+      const { email, password } = this.state;
 
-      const {
-          history,
-      } = this.props;
+      const { history } = this.props;
 
       auth.doSignInWithEmailAndPassword(email, password)
           .then(() => {
               this.setState(() => ({ ...INITIAL_STATE}));
-              history.push(routes.BOOKS);
+              history.push(routes.ITEMS);
           })
           .catch(error => {
               this.setState(byPropKey('error', error));
@@ -79,79 +74,10 @@ class SignInForm extends Component {
       event.preventDefault();
   }
 
-//   <div>
-// <Iphone />
-// </div>
-
-// class Books extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       books: [],
-//       title: "",
-//       author: "",
-//       synopsis: ""
-//     };
-//   }
-
-//   handleRoute = event => {
-//     event.preventDefault();
-//     window.location.href="/books"
-// }
-  // When the component mounts, load all books and save them to this.state.books
-//   componentDidMount() {
-//     this.loadBooks();
-//   }
-
-  // Loads all books  and sets them to this.state.books
-//   loadBooks = () => {
-//     API.getBooks()
-//       .then(res =>
-//         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-//       )
-//       .catch(err => console.log(err));
-//   };
-
-  // Deletes a book from the database with a given id, then reloads books from the db
-//   deleteBook = id => {
-//     API.deleteBook(id)
-//       .then(res => this.loadBooks())
-//       .catch(err => console.log(err));
-//   };
-
-  // Handles updating component state when the user types into the input field
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   render() {
-    const {
-      email,
-      password,
-      error,
-  } = this.state;
+    const { email, password, error } = this.state;
 
-  const isInvalid =
-      password === '' ||
-      email === '';
+  const isInvalid = password === '' || email === '';
 
     return (
       <form onSubmit={this.onSubmit}>

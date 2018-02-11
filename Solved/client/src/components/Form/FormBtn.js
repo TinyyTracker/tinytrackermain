@@ -22,4 +22,4 @@ FormBtn.props = {
   onClick: PropTypes.func
 }
 
-export default FormBtn
+export default FormBtn;

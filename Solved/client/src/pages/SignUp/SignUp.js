@@ -37,20 +37,14 @@ class SignUpForm extends Component {
     }
 
     onSubmit = (event) => {
-        const {
-            username,
-            email,
-            passwordOne,
-        } = this.state;
+        const { username, email, passwordOne } = this.state;
 
-        const {
-            history,
-        } = this.props;
+        const { history } = this.props;
 
         auth.doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
                 this.setState(() => ({ ...INITIAL_STATE}));
-                history.push(routes.BOOKS);
+                history.push(routes.ITEMS);
             })
             .catch(error => {
                 this.setState(byPropKey('error', error));
@@ -61,19 +55,9 @@ class SignUpForm extends Component {
     }
 
     render() {
-        const {
-            username,
-            email,
-            passwordOne,
-            passwordTwo,
-            error,
-        } = this.state;
+        const { username, email, passwordOne, passwordTwo, error} = this.state;
 
-        const isInvalid =
-            passwordOne !== passwordTwo ||
-            passwordOne === '' ||
-            email === '' ||
-            username === '';
+        const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
 
         return (
             <div className="container">

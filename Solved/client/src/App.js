@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
+import Items from "./pages/Items";
 import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import Detail from "./pages/Detail";
@@ -21,7 +21,7 @@ const App = () =>
         <Route exact path={routes.SIGN_IN} component={Signin} />
         <Route exact path={routes.SIGN_UP} component={SignUp} />
         <Route exact path={routes.PASSWORDFORGET} component={PasswordForget} />
-        <Route exact path={routes.BOOKS} component={Books} />
+        <Route exact path={routes.ITEMS} component={Items} />
         <Route exact path={routes.DASHBOARD} component={Dashboard} />
         <Route exact path={routes.DETAIL} component={Detail} />
         <Route component={NoMatch} />

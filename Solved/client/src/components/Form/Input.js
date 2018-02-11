@@ -19,4 +19,4 @@ Input.props = {
   placeholder: PropTypes.string
 }
 
-export default Input
+export default Input;
