@@ -14,7 +14,7 @@ import SignInForm from '../Signin';
 import withAuthorization from '../../components/Authorization';
 import { firebase } from '../../firebase';
 
-class Books extends React.Component {
+class Items extends React.Component {
   constructor(props, { authUser }) {
     super(props);
     this.state = {
@@ -205,4 +205,4 @@ console.log("++++++++++++++++++" + this.state.email);
 const authCondition = (authUser) => !!authUser;
 
 
-export default withAuthorization(authCondition)(Books);
+export default withAuthorization(authCondition)(Items);
