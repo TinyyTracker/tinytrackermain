@@ -9,7 +9,7 @@ class Iphone extends React.Component {
 
     return (
       <div>
-        <img className="iphone-photo" src="iphone_6_plus_white_port.png"/>
+        <img className="iphone-photo" src="iphone_6_plus_white_port.png" alt="iphone"/>
       </div>
     )
   }
