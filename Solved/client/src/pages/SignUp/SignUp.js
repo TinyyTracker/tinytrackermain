@@ -107,7 +107,7 @@ class SignUpForm extends Component {
                 className="form-control"
                 />
                 <button disabled={isInvalid} type="submit" className="btn" aria-label="Left Align">
-  <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true"></span><span>Sign Up!</span>
+  <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true" style={{fontSize:"16px"}}></span><span>Sign Up!</span>
 </button>
 
                 { error && <p>{error.message}</p>}
