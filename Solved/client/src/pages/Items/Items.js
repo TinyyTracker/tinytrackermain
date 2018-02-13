@@ -111,12 +111,13 @@ console.log("++++++++++++++++++" + this.state.email);
         <Row>
         <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Find My Shit</h1>
+              <h1>Find My Items</h1>
             </Jumbotron>
             <div className="form-group">
         <select className="form-control"
         value={this.state.sLocation}
         onChange={this.handleLocationChange}
+        style={{width:"100%"}}
         // onClick={this.loadBooks(this.handleLocationChange)}
         name="sLocation"
         
