@@ -8,7 +8,7 @@ class Input extends React.Component {
 
     return (
       <div className="form-group">
-        <input className="form-control" {...this.props} />
+        <input className="form-control" {...this.props} style={{width:"100%"}}/>
       </div>
     )
   }

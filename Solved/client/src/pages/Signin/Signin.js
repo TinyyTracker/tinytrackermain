@@ -10,7 +10,7 @@ import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 import "./Signin.css";
 
-const divStyle = {color: 'black'};
+const divStyle = {color: 'black'}; 
 
 const SignInPage = ({ history }) =>
 <div className="signin-menu-route">
