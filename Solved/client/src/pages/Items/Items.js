@@ -117,7 +117,7 @@ console.log("++++++++++++++++++" + this.state.email);
         <select className="form-control"
         value={this.state.sLocation}
         onChange={this.handleLocationChange}
-        style={{width:"100%"}}
+        style={{width:"100%"}} 
         // onClick={this.loadBooks(this.handleLocationChange)}
         name="sLocation"
         
