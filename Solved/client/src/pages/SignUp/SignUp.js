@@ -9,7 +9,7 @@ import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const SignUpPage = ({history}) =>
-<div>
+<div className="signin-menu-background">
     <Nav />
     <div className="signup-form">
         <h1 className="signup-header">Sign Up Page</h1>

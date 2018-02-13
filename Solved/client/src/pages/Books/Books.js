@@ -104,7 +104,7 @@ console.log("++++++++++++++++++" + this.state.email);
 
   render() {
     return (
-      <div>
+      <div className="signin-menu-background">
         <Nav />
       <Container fluid>
         <Row>

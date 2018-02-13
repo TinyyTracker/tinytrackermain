@@ -48,7 +48,7 @@ class Detail extends React.Component {
   };
 
   getReadOnly = () => (
-    <div>
+    <div className="signin-menu-background">
       <Nav />
     <Container fluid>
       <Row>
@@ -89,7 +89,7 @@ class Detail extends React.Component {
   );
 
   getUpdateform = () => (
-    <div>
+    <div className="signin-menu-background">
       <Nav />
     <Container fluid>
       <Row>
