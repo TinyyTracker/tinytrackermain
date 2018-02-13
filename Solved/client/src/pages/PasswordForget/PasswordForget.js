@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import Nav from "../../components/Nav";
 import { auth } from '../../firebase';
 
 const PasswordForgetPage = () =>
-    <div>
+    <div className="signin-menu-background" style={{height:"100vh"}}>
+        <Nav />
+        <div style={{textAlign:"center"}}>
         <h1>Password Forget Page</h1>
         <PasswordForgetForm />
+        </div>
     </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -51,10 +54,11 @@ class PasswordForgetForm extends Component {
                 onChange={event => this.setState(byPropKey('email', event.target.value))}
                 type="text"
                 placeholder="Email Address"
+                className="form-control"
             />
-            <button disabled={isInvalid} type="submit">
-            Reset My Password
-            </button>
+            <button disabled={isInvalid} type="submit" className="btn" aria-label="Left Align" style={{backgroundColor:"#f53240"}}>
+            <span className="glyphicon glyphicon-play glyphicon-align-left" aria-hidden="true" style={{fontSize:"16px"}}></span><span>Reset My Password!</span>
+          </button>
 
             { error && <p>{error.message}</p>}
             </form>

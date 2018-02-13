@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Nav from "../../components/Nav";
 import Iphone from "../../components/Iphone";
 import Features from "../../components/Features";
+import Download from "../../components/Download";
 import { Col, Row, Container } from "../../components/Grid";
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -35,6 +36,7 @@ const SignInPage = ({ history }) =>
 </div>
 </div>
 <Features />
+<Download />
 </div>
 </div>
 
@@ -96,8 +98,8 @@ class SignInForm extends Component {
                 className="form-control"
                 />
                 <button disabled={isInvalid} type="submit" className="btn" aria-label="Left Align">
-  <span>Signin!</span>
-</button>
+                <span>Signin!</span>
+              </button>
 
                 { error && <p>{error.message}</p>}
             </form>
