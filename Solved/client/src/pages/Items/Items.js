@@ -108,7 +108,7 @@ console.log("++++++++++++++++++" + this.state.email);
       <div className="signin-menu-background">
         <Nav />
       <Container fluid>
-        <Row>
+        <Row style={{marginBotton:"10%"}}>
         <Col size="md-6 sm-12">
             <Jumbotron>
               <h1>Find My Items</h1>
@@ -117,7 +117,7 @@ console.log("++++++++++++++++++" + this.state.email);
         <select className="form-control"
         value={this.state.sLocation}
         onChange={this.handleLocationChange}
-        style={{width:"100%"}}
+        style={{width:"100%"}} 
         // onClick={this.loadBooks(this.handleLocationChange)}
         name="sLocation"
         

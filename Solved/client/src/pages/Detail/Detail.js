@@ -81,14 +81,14 @@ class Detail extends React.Component {
         <button 
         type="button" 
         className="btn"
-        style={{backgroundColor:"#431c5d"}} 
+        style={{backgroundColor:"#f53240"}} 
         aria-label="Left Align"
         onClick={() => this.handleUpdate(true)}
         >
   <span>Update Item!</span>
 </button>
         <Col size="md-2">
-          <Link to="/items">← Back to Dashboard</Link>
+          <a href="/items">← Back to Dashboard</a>
         </Col>
       </Row>
     </Container>
