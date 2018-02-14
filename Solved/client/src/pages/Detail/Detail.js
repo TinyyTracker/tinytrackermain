@@ -88,7 +88,7 @@ class Detail extends React.Component {
   <span>Update Item!</span>
 </button>
         <Col size="md-2">
-          <Link to="/items">← Back to Dashboard</Link>
+          <a href="/items">← Back to Dashboard</a>
         </Col>
       </Row>
     </Container>
