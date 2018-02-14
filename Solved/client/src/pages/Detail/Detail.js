@@ -81,7 +81,7 @@ class Detail extends React.Component {
         <button 
         type="button" 
         className="btn"
-        style={{backgroundColor:"#431c5d"}} 
+        style={{backgroundColor:"#f53240"}} 
         aria-label="Left Align"
         onClick={() => this.handleUpdate(true)}
         >
