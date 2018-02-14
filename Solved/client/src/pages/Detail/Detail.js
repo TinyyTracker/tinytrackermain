@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
 import { Col, Row, Container } from "../../components/Grid";
