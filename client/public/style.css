@@ -1,0 +1,13 @@
+.signin-menu-background{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #e6e6e8;
+}
+#mobile-app{
+    text-align: center;
+    background-color: #f53240;
+}
+.row{
+    margin-bottom: 10%;
+}
