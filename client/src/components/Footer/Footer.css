@@ -1,5 +1,9 @@
 footer {
     height:15vh;
     text-align: center;
-    background-color: #252839;
+    background-color: #252839; 
+}
+
+h5 {
+    color: #e6e6e8;
 }
